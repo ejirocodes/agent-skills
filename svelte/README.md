@@ -1,4 +1,4 @@
-# svelte-skills
+# svelte
 
 Agent skills for Svelte 5 and SvelteKit development.
 
@@ -11,7 +11,7 @@ Agent skills for Svelte 5 and SvelteKit development.
 ## Installation
 
 ```bash
-npx add-skill ejirocodes/svelte-skills
+npx add-skill ejirocodes/agent-skills/svelte
 ```
 
 ## Usage

@@ -19,7 +19,7 @@ Agent skills are structured knowledge bases that help AI coding assistants (like
 
 | Skill | Description | Rules | Install |
 |-------|-------------|-------|---------|
-| [svelte-skills](./svelte-skills) | Svelte 5 runes, snippets, and SvelteKit patterns | 24 | `npx add-skill ejirocodes/agent-skills/svelte-skills` |
+| [svelte](./svelte) | Svelte 5 runes, snippets, and SvelteKit patterns | 24 | `npx add-skill ejirocodes/agent-skills/svelte` |
 
 ## Installation
 
@@ -32,7 +32,7 @@ npx add-skill ejirocodes/agent-skills
 For example, to install Svelte skills:
 
 ```bash
-npx add-skill ejirocodes/agent-skills/svelte-skills
+npx add-skill ejirocodes/agent-skills/svelte
 ```
 
 ## Usage
@@ -82,7 +82,7 @@ Each rule includes:
 
 Contributions are welcome! To add a new skill:
 
-1. Create a folder for your skill (e.g., `react-skills/`)
+1. Create a folder for your skill (e.g., `react/`)
 2. Follow the structure above
 3. Include comprehensive rules with:
    - Clear problem descriptions
