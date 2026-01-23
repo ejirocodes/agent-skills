@@ -20,6 +20,7 @@ Agent skills are structured knowledge bases that help AI coding assistants (like
 | Skill | Description | Install |
 |-------|-------------|---------|
 | [svelte](./svelte) | Svelte 5 runes, snippets, and SvelteKit patterns | `npx add-skill ejirocodes/agent-skills/svelte` |
+| [vue](./vue) | Vue 3.5+ TypeScript, Volar, Pinia testing, and component patterns | `npx add-skill ejirocodes/agent-skills/vue` |
 
 ## Installation
 
@@ -92,7 +93,7 @@ Contributions are welcome! To add a new skill:
 
 Future skills planned:
 
-- **Frontend** - React 19, Vue 3, Angular, Solid
+- **Frontend** - React 19, Angular, Solid
 - **Backend** - Node.js, Deno, Bun, Go, Rust
 - **Databases** - PostgreSQL, MongoDB, Redis, Prisma
 - **DevOps** - Docker, Kubernetes, CI/CD

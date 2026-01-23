@@ -4,6 +4,9 @@
 
 - [defineModel Patterns](#definemodel-patterns)
 - [Deep Watch with Numeric Depth](#deep-watch-with-numeric-depth)
+- [onWatcherCleanup](#onwatchercleanup)
+- [useId for SSR](#useid-for-ssr)
+- [Deferred Teleport](#deferred-teleport)
 
 ---
 
@@ -60,6 +63,19 @@ const handleUpdate = (value: Item | undefined) => {
 
 ```typescript
 const model = defineModel<string>({ default: '' })
+```
+
+### Multiple v-models
+
+```vue
+<script setup lang="ts">
+// Named models
+const firstName = defineModel<string>('firstName', { required: true })
+const lastName = defineModel<string>('lastName', { required: true })
+
+// Default model
+const selected = defineModel<boolean>({ default: false })
+</script>
 ```
 
 ### Type Declaration Pattern
@@ -159,5 +175,196 @@ If TypeScript complains about numeric deep, ensure:
 1. Vue version is 3.5+
 2. TypeScript version is current (types are included with `vue` package)
 3. tsconfig targets correct node_modules types
+
+**Reference:** [Vue 3.5 Release Notes](https://blog.vuejs.org/posts/vue-3-5)
+
+---
+
+## onWatcherCleanup
+
+Vue 3.5 introduced `onWatcherCleanup()` for registering cleanup callbacks in watchers. This simplifies managing side effects like aborting requests, clearing timers, or cleaning up subscriptions.
+
+### Basic Usage
+
+```typescript
+import { watch, onWatcherCleanup } from 'vue'
+
+watch(searchQuery, async (query) => {
+  const controller = new AbortController()
+
+  // Register cleanup - runs when watcher re-runs or component unmounts
+  onWatcherCleanup(() => {
+    controller.abort()
+  })
+
+  const response = await fetch(`/api/search?q=${query}`, {
+    signal: controller.signal
+  })
+  results.value = await response.json()
+})
+```
+
+### In Nested Functions
+
+Unlike the `onCleanup` parameter, `onWatcherCleanup` can be used in nested functions:
+
+```typescript
+watch(id, (newId) => {
+  startPolling(newId)
+})
+
+function startPolling(id: string) {
+  const interval = setInterval(() => {
+    fetchData(id)
+  }, 5000)
+
+  // Works even though it's not directly in the watch callback
+  onWatcherCleanup(() => {
+    clearInterval(interval)
+  })
+}
+```
+
+### With watchEffect
+
+```typescript
+import { watchEffect, onWatcherCleanup } from 'vue'
+
+watchEffect(() => {
+  const connection = createWebSocket(url.value)
+
+  onWatcherCleanup(() => {
+    connection.close()
+  })
+})
+```
+
+### Comparison with onCleanup Parameter
+
+```typescript
+// Old way (still valid)
+watch(source, async (value, oldValue, onCleanup) => {
+  const controller = new AbortController()
+  onCleanup(() => controller.abort())
+  // ...
+})
+
+// New way (Vue 3.5+)
+watch(source, async (value) => {
+  const controller = new AbortController()
+  onWatcherCleanup(() => controller.abort())
+  // ...
+})
+```
+
+### Suppress Warnings
+
+If called outside an active watcher, it logs a warning. Suppress with second parameter:
+
+```typescript
+// Suppress "onWatcherCleanup called outside of watcher" warning
+onWatcherCleanup(() => cleanup(), true)
+```
+
+**Reference:** [Vue 3.5 Release Notes](https://blog.vuejs.org/posts/vue-3-5)
+
+---
+
+## useId for SSR
+
+Vue 3.5 introduces `useId()` to generate unique, SSR-stable IDs for accessibility attributes and form elements.
+
+### Basic Usage
+
+```vue
+<script setup>
+import { useId } from 'vue'
+
+const inputId = useId()
+</script>
+
+<template>
+  <label :for="inputId">Email</label>
+  <input :id="inputId" type="email" />
+</template>
+```
+
+### Why useId?
+
+- **SSR-safe:** IDs are stable across server and client renders, preventing hydration mismatches
+- **Unique per component instance:** Multiple instances get different IDs
+- **Accessible:** Perfect for `aria-labelledby`, `aria-describedby`, form labels
+
+### Multiple IDs
+
+```vue
+<script setup>
+import { useId } from 'vue'
+
+const nameId = useId()
+const emailId = useId()
+const errorId = useId()
+</script>
+
+<template>
+  <div>
+    <label :for="nameId">Name</label>
+    <input :id="nameId" :aria-describedby="errorId" />
+    <span :id="errorId" class="error">Required</span>
+  </div>
+</template>
+```
+
+### Compared to Random IDs
+
+```typescript
+// ❌ Causes hydration mismatch in SSR
+const id = `input-${Math.random().toString(36).slice(2)}`
+
+// ✅ Stable across server/client
+const id = useId()
+```
+
+**Reference:** [Vue 3.5 Release Notes](https://blog.vuejs.org/posts/vue-3-5)
+
+---
+
+## Deferred Teleport
+
+Vue 3.5 introduces the `defer` prop for `<Teleport>` which mounts content after the current render cycle, solving timing issues with dynamic targets.
+
+### Problem
+
+```vue
+<!-- ❌ Target doesn't exist yet during first render -->
+<Teleport to="#modal-container">
+  <Modal />
+</Teleport>
+
+<div id="modal-container"></div>
+```
+
+### Solution
+
+```vue
+<!-- ✅ Defers teleport until after current render cycle -->
+<Teleport to="#modal-container" defer>
+  <Modal />
+</Teleport>
+
+<div id="modal-container"></div>
+```
+
+### Use Cases
+
+- Teleporting to elements rendered later in the same component
+- Dynamic portals that may not exist immediately
+- Nested component structures where target is created by a child
+
+### Important Notes
+
+- `defer` is opt-in for backwards compatibility
+- The teleported content renders in the next tick
+- Target element must exist by the time deferred teleport executes
 
 **Reference:** [Vue 3.5 Release Notes](https://blog.vuejs.org/posts/vue-3-5)
