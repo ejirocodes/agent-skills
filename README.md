@@ -17,9 +17,9 @@ Agent skills are structured knowledge bases that help AI coding assistants (like
 
 ## Available Skills
 
-| Skill | Description | Rules | Install |
-|-------|-------------|-------|---------|
-| [svelte](./svelte) | Svelte 5 runes, snippets, and SvelteKit patterns | 24 | `npx add-skill ejirocodes/agent-skills/svelte` |
+| Skill | Description | Install |
+|-------|-------------|---------|
+| [svelte](./svelte) | Svelte 5 runes, snippets, and SvelteKit patterns | `npx add-skill ejirocodes/agent-skills/svelte` |
 
 ## Installation
 
@@ -51,32 +51,22 @@ Each skill follows this structure:
 
 ```
 <skill-name>/
-├── README.md              # Skill overview and usage
 ├── LICENSE                # MIT License
 └── skills/
     └── <skill-set>/
-        ├── SKILL.md       # Skill metadata and rule index
-        └── rules/
-            └── *.md       # Individual rule files
+        ├── SKILL.md       # Skill metadata and quick reference
+        └── references/
+            └── *.md       # Domain-specific reference files
 ```
 
-### Rule Types
+### Reference Organization
 
-Rules are classified into two categories:
+References are organized by domain for progressive disclosure:
 
-- **Capability** - AI *cannot* solve the problem without the skill. These address breaking changes, new syntax, or patterns outside AI's training data.
+- **SKILL.md** - Lean entry point with essential patterns and navigation
+- **references/** - Detailed documentation loaded only when needed
 
-- **Efficiency** - AI *can* solve the problem but not optimally. These provide best practices and consistent approaches.
-
-### Rule Format
-
-Each rule includes:
-
-- **Impact level** (HIGH/MEDIUM)
-- **Symptoms** - What the developer experiences
-- **Root cause** - Why the problem occurs
-- **Fix** - Correct patterns with code examples
-- **References** - Links to official documentation
+This structure keeps the main skill file small while providing comprehensive coverage through domain-specific reference files (e.g., `runes.md`, `sveltekit.md`, `migration.md`).
 
 ## Contributing
 
