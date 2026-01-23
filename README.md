@@ -26,7 +26,7 @@ Agent skills are structured knowledge bases that help AI coding assistants (like
 Install a skill using the `add-skill` CLI:
 
 ```bash
-npx add-skill ejirocodes/agent-skills/<skill-name>
+npx add-skill ejirocodes/agent-skills
 ```
 
 For example, to install Svelte skills:
