@@ -1,6 +1,10 @@
 ---
 name: vue-best-practices
 description: "Vue 3 and Vue.js best practices for TypeScript, vue-tsc, Volar, and component patterns. Use when writing, reviewing, or refactoring Vue 3 components with TypeScript, configuring Volar/vueCompilerOptions, extracting component types, working with defineModel/withDefaults, setting up Pinia store tests, or debugging Vue tooling issues. Triggers on Vue components, props extraction, wrapper components, template type checking, strictTemplates, vueCompilerOptions, Volar 3, CSS modules, fallthrough attributes, defineModel, withDefaults, deep watch, vue-router typed params, Pinia mocking, HMR SSR, moduleResolution bundler, useTemplateRef, onWatcherCleanup, useId, generic components, reactive props destructure."
+license: MIT
+metadata:
+  author: ejirocodes
+  version: '1.0.0'
 ---
 
 # Vue 3 Best Practices
