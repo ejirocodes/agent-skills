@@ -21,7 +21,7 @@ Agent skills are structured knowledge bases that help AI coding assistants (like
 |-------|-------------|---------|
 | [nestjs](./nestjs) | NestJS 11+ DI, validation, auth, TypeORM/Prisma/Drizzle, and testing patterns | `npx add-skill ejirocodes/agent-skills/nestjs` |
 | [svelte](./svelte) | Svelte 5 runes, snippets, and SvelteKit patterns | `npx add-skill ejirocodes/agent-skills/svelte` |
-| [vue](./vue) | Vue 3.5+ TypeScript, Volar, Pinia testing, and component patterns | `npx add-skill ejirocodes/agent-skills/vue` |
+| [vue](./vue) | Vue 3+ TypeScript, Volar, Pinia testing, and component patterns | `npx add-skill ejirocodes/agent-skills/vue` |
 
 ## Installation
 
