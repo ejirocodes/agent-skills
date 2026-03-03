@@ -36,19 +36,36 @@ Agent skills are structured knowledge bases that help AI coding assistants (like
 
 ## Installation
 
-Install a skill using the `add-skill` CLI:
-
-```bash
-npx add-skill ejirocodes/agent-skills
-```
-
-For example, to install Svelte skills:
+### Install via skills.sh
 
 ```bash
 npx add-skill ejirocodes/agent-skills/svelte
+npx add-skill ejirocodes/agent-skills/vue
+npx add-skill ejirocodes/agent-skills/nestjs
+npx add-skill ejirocodes/agent-skills/exa-search
+npx add-skill ejirocodes/agent-skills/exa-rag
+npx add-skill ejirocodes/agent-skills/exa-research
+npx add-skill ejirocodes/agent-skills/exa-entities
+```
+
+### Claude Code (Plugin Marketplace)
+
+Add the marketplace once, then install individual skills:
+
+```shell
+/plugin marketplace add ejirocodes/agent-skills
+```
+
+```shell
+/plugin install svelte5-best-practices@ejirocodes-skills
+/plugin install vue-best-practices@ejirocodes-skills
+/plugin install nestjs-best-practices@ejirocodes-skills
+/plugin install exa@ejirocodes-skills
 ```
 
 ## Usage
+
+### skills.sh
 
 For best results, prefix your prompt with `use <skill> skill`:
 
@@ -57,6 +74,20 @@ Use svelte skill, help me create a form component with validation
 ```
 
 This explicitly triggers the skill and ensures the AI follows the documented patterns. Without the prefix, skill triggering depends on how closely your prompt matches the skill's keywords.
+
+### Claude Code
+
+Skills are available as slash commands after installation:
+
+```shell
+/svelte5-best-practices
+/vue-best-practices
+/nestjs-best-practices
+/exa-search
+/exa-rag
+/exa-research
+/exa-entities
+```
 
 ## Skill Structure
 
