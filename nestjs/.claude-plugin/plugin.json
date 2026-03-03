@@ -1,0 +1,7 @@
+{
+  "name": "nestjs-best-practices",
+  "description": "NestJS 11+ best practices for enterprise Node.js applications with TypeScript.",
+  "version": "1.0.0",
+  "author": { "name": "ejirocodes" },
+  "license": "MIT"
+}

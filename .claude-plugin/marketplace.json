@@ -1,0 +1,47 @@
+{
+  "name": "ejirocodes-skills",
+  "owner": {
+    "name": "ejirocodes"
+  },
+  "metadata": {
+    "description": "Curated AI agent skills for framework-specific best practices and tool integrations"
+  },
+  "plugins": [
+    {
+      "name": "svelte5-best-practices",
+      "source": "./svelte",
+      "description": "Svelte 5 runes, snippets, SvelteKit patterns, and modern best practices for TypeScript and component development.",
+      "version": "1.0.0",
+      "author": { "name": "ejirocodes" },
+      "license": "MIT",
+      "keywords": ["svelte", "svelte5", "runes", "sveltekit", "typescript"]
+    },
+    {
+      "name": "vue-best-practices",
+      "source": "./vue",
+      "description": "Vue 3 best practices for TypeScript, vue-tsc, Volar, Pinia, and component patterns.",
+      "version": "1.0.0",
+      "author": { "name": "ejirocodes" },
+      "license": "MIT",
+      "keywords": ["vue", "vue3", "typescript", "volar", "pinia"]
+    },
+    {
+      "name": "nestjs-best-practices",
+      "source": "./nestjs",
+      "description": "NestJS 11+ best practices for enterprise Node.js applications with TypeScript.",
+      "version": "1.0.0",
+      "author": { "name": "ejirocodes" },
+      "license": "MIT",
+      "keywords": ["nestjs", "nodejs", "typescript", "enterprise", "api"]
+    },
+    {
+      "name": "exa",
+      "source": "./exa",
+      "description": "Exa.ai skills for web search, RAG pipelines, deep research, and company/people entity search.",
+      "version": "1.0.0",
+      "author": { "name": "ejirocodes" },
+      "license": "MIT",
+      "keywords": ["exa", "search", "rag", "research", "lead-generation"]
+    }
+  ]
+}
