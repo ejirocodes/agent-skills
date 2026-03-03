@@ -1,0 +1,7 @@
+{
+  "name": "vue-best-practices",
+  "description": "Vue 3 best practices for TypeScript, vue-tsc, Volar, Pinia, and component patterns.",
+  "version": "1.0.0",
+  "author": { "name": "ejirocodes" },
+  "license": "MIT"
+}

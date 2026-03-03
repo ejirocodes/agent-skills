@@ -1,0 +1,7 @@
+{
+  "name": "svelte5-best-practices",
+  "description": "Svelte 5 runes, snippets, SvelteKit patterns, and modern best practices for TypeScript and component development.",
+  "version": "1.0.0",
+  "author": { "name": "ejirocodes" },
+  "license": "MIT"
+}

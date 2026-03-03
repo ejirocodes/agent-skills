@@ -1,0 +1,7 @@
+{
+  "name": "exa",
+  "description": "Exa.ai skills for web search, RAG pipelines, deep research, and company/people entity search.",
+  "version": "1.0.0",
+  "author": { "name": "ejirocodes" },
+  "license": "MIT"
+}
