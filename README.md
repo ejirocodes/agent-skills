@@ -21,34 +21,51 @@ Agent skills are structured knowledge bases that help AI coding assistants (like
 
 | Skill | Description | Install |
 |-------|-------------|---------|
-| [nestjs](./nestjs) | NestJS 11+ DI, validation, auth, TypeORM/Prisma/Drizzle, and testing patterns | `npx add-skill ejirocodes/agent-skills/nestjs` |
-| [svelte](./svelte) | Svelte 5 runes, snippets, and SvelteKit patterns | `npx add-skill ejirocodes/agent-skills/svelte` |
-| [vue](./vue) | Vue 3+ TypeScript, Volar, Pinia testing, and component patterns | `npx add-skill ejirocodes/agent-skills/vue` |
+| [nestjs](./nestjs) | NestJS 11+ DI, validation, auth, TypeORM/Prisma/Drizzle, and testing patterns | `npx skills add ejirocodes/agent-skills/nestjs` |
+| [svelte](./svelte) | Svelte 5 runes, snippets, and SvelteKit patterns | `npx skills add ejirocodes/agent-skills/svelte` |
+| [vue](./vue) | Vue 3+ TypeScript, Volar, Pinia testing, and component patterns | `npx skills add ejirocodes/agent-skills/vue` |
 
 ### Exa.ai Skills
 
 | Skill | Description | Install |
 |-------|-------------|---------|
-| [exa-search](./exa/skills/exa-search) | Core Exa search API integration (neural/keyword/auto modes, filters, content retrieval) | `npx add-skill ejirocodes/agent-skills/exa-search` |
-| [exa-rag](./exa/skills/exa-rag) | RAG pipelines with Exa (LangChain, LlamaIndex, Vercel AI SDK, MCP tools) | `npx add-skill ejirocodes/agent-skills/exa-rag` |
-| [exa-research](./exa/skills/exa-research) | Deep research and Answer API with citations and streaming | `npx add-skill ejirocodes/agent-skills/exa-research` |
-| [exa-entities](./exa/skills/exa-entities) | Company and people search for lead gen, recruiting, and competitive intelligence | `npx add-skill ejirocodes/agent-skills/exa-entities` |
+| [exa-search](./exa/skills/exa-search) | Core Exa search API integration (neural/keyword/auto modes, filters, content retrieval) | `npx skills add ejirocodes/agent-skills/exa-search` |
+| [exa-rag](./exa/skills/exa-rag) | RAG pipelines with Exa (LangChain, LlamaIndex, Vercel AI SDK, MCP tools) | `npx skills add ejirocodes/agent-skills/exa-rag` |
+| [exa-research](./exa/skills/exa-research) | Deep research and Answer API with citations and streaming | `npx skills add ejirocodes/agent-skills/exa-research` |
+| [exa-entities](./exa/skills/exa-entities) | Company and people search for lead gen, recruiting, and competitive intelligence | `npx skills add ejirocodes/agent-skills/exa-entities` |
 
 ## Installation
 
-Install a skill using the `add-skill` CLI:
+### Install via skills.sh
 
 ```bash
-npx add-skill ejirocodes/agent-skills
+npx skills add ejirocodes/agent-skills/svelte
+npx skills add ejirocodes/agent-skills/vue
+npx skills add ejirocodes/agent-skills/nestjs
+npx skills add ejirocodes/agent-skills/exa-search
+npx skills add ejirocodes/agent-skills/exa-rag
+npx skills add ejirocodes/agent-skills/exa-research
+npx skills add ejirocodes/agent-skills/exa-entities
 ```
 
-For example, to install Svelte skills:
+### Claude Code (Plugin Marketplace)
 
-```bash
-npx add-skill ejirocodes/agent-skills/svelte
+Add the marketplace once, then install individual skills:
+
+```shell
+/plugin marketplace add ejirocodes/agent-skills
+```
+
+```shell
+/plugin install svelte5-best-practices@ejirocodes-skills
+/plugin install vue-best-practices@ejirocodes-skills
+/plugin install nestjs-best-practices@ejirocodes-skills
+/plugin install exa@ejirocodes-skills
 ```
 
 ## Usage
+
+### skills.sh
 
 For best results, prefix your prompt with `use <skill> skill`:
 
@@ -57,6 +74,20 @@ Use svelte skill, help me create a form component with validation
 ```
 
 This explicitly triggers the skill and ensures the AI follows the documented patterns. Without the prefix, skill triggering depends on how closely your prompt matches the skill's keywords.
+
+### Claude Code
+
+Skills are available as slash commands after installation:
+
+```shell
+/svelte5-best-practices
+/vue-best-practices
+/nestjs-best-practices
+/exa-search
+/exa-rag
+/exa-research
+/exa-entities
+```
 
 ## Skill Structure
 
